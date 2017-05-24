@@ -18,5 +18,5 @@ public enum ApiError : Error {
 
 // API Client Contract
 public protocol ApiClient {
-    static func fetchCitiesWeather(callback:  @escaping CityWeatherCallback)
+    func fetchCitiesWeather(callback:  @escaping CityWeatherCallback)
 }

@@ -11,7 +11,7 @@ import Foundation
 /// API Client using OpenWeatherMap web service
 public class OpenWeatherMapApiClient : ApiClient {
     
-    public static func fetchCitiesWeather(callback:  @escaping CityWeatherCallback) {
+    public func fetchCitiesWeather(callback:  @escaping CityWeatherCallback) {
         let urlString = OpenWeatherMapApi.weatherForSydneyMelbourneAndBrisbane()
         let url = URL(string: urlString)!
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
@@ -23,7 +23,7 @@ public class OpenWeatherMapApiClient : ApiClient {
             } else if let data = data {
                 // We have data, let's try process it!
                 do {
-                    let details = try OpenWeatherMapApiClient.decodeCitiesWeather(data: data)
+                    let details = try self.decodeCitiesWeather(data: data)
                     callback(.success(details))
                 } catch {
                     callback(.failure(.decoding))
@@ -34,12 +34,12 @@ public class OpenWeatherMapApiClient : ApiClient {
     }
     
     /// Decode data into API model
-    public static func decodeCitiesWeather(data:Data) throws -> [CityWeatherApiModel] {
+    public func decodeCitiesWeather(data:Data) throws -> [CityWeatherApiModel] {
         let jsonRoot = try JSONSerialization.jsonObject(with: data)
         let json = jsonRoot as? [String:Any]
         if let j = json {
             // Convert the JSON array into list of CityWeathers
-            var models = [CityWeatherApiModel]
+            var models = [CityWeatherApiModel]()
             guard let list = j["list"] as? [[String:Any]] else {
                 throw ApiError.decoding
             }
