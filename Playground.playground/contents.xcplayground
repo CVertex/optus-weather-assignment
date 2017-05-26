@@ -3,5 +3,6 @@
     <pages>
         <page name='ApiUrls'/>
         <page name='UnixDate'/>
+        <page name='Formatting'/>
     </pages>
 </playground>
