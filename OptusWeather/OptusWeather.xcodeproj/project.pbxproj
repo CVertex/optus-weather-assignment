@@ -37,6 +37,8 @@
 		B1C7ECD91ED6675B007516CB /* ViewModelPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECD81ED6675B007516CB /* ViewModelPopulation.swift */; };
 		B1C7ECDB1ED7E0EC007516CB /* CityListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECDA1ED7E0EC007516CB /* CityListViewModelTests.swift */; };
 		B1C7ECDE1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECDD1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift */; };
+		B1C7ECE01ED8016F007516CB /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECDF1ED8016F007516CB /* CityListController.swift */; };
+		B1C7ECE21ED80264007516CB /* CityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECE11ED80264007516CB /* CityListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		B1C7ECD81ED6675B007516CB /* ViewModelPopulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelPopulation.swift; sourceTree = "<group>"; };
 		B1C7ECDA1ED7E0EC007516CB /* CityListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewModelTests.swift; sourceTree = "<group>"; };
 		B1C7ECDD1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapClientTests.swift; sourceTree = "<group>"; };
+		B1C7ECDF1ED8016F007516CB /* CityListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
+		B1C7ECE11ED80264007516CB /* CityListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,9 +205,11 @@
 		B1C7ECDC1ED7F9A2007516CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B1C7ECE11ED80264007516CB /* CityListCell.swift */,
+				B1C7ECDF1ED8016F007516CB /* CityListController.swift */,
 				B12A3E041ED5542B009994F1 /* LaunchScreen.storyboard */,
-				B12A3DFD1ED5542A009994F1 /* ViewController.swift */,
 				B12A3DFF1ED5542A009994F1 /* Main.storyboard */,
+				B12A3DFD1ED5542A009994F1 /* ViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -329,6 +335,8 @@
 				B1C7ECD71ED65DA9007516CB /* Formatters.swift in Sources */,
 				B12A3E3D1ED5C564009994F1 /* Wind.swift in Sources */,
 				B12A3DFC1ED5542A009994F1 /* AppDelegate.swift in Sources */,
+				B1C7ECE01ED8016F007516CB /* CityListController.swift in Sources */,
+				B1C7ECE21ED80264007516CB /* CityListCell.swift in Sources */,
 				B12A3E351ED5C322009994F1 /* CityWeatherModelManager.swift in Sources */,
 				B12A3E2D1ED5ADB9009994F1 /* ApiClient.swift in Sources */,
 				B12A3E2F1ED5B639009994F1 /* OpenWeatherMapApi.swift in Sources */,

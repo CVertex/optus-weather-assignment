@@ -10,7 +10,7 @@ import XCTest
 @testable import OptusWeather
 
 /// Simple tests for open weather map api client
-/// NB: hits real API. In practice, I may use Moya as a network abstraction layer
+/// NB: hits real API. In practice, I use Moya as a network abstraction layer
 class OpenWeatherMapClientTests: XCTestCase {
     
     override func setUp() {
