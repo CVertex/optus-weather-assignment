@@ -141,4 +141,46 @@ class CityListViewModelTests: XCTestCase {
             XCTAssert(vm.cities.count == 0)
         }
     }
+    
+    /// Testing a successful retry
+    func testLoadingToErrorToLoadingToLoaded() {
+        // Arrange, Loading -> Error
+        let listen = Listener()
+        let client = CallbackClient()
+        let vm = CityListViewModel(delegate: listen, apiClient: client)
+        var expect = expectation(description: "Error expectation")
+        client.callbackHandler = { callback in
+            callback(.failure(.network))
+            expect.fulfill()
+        }
+        
+        // Act
+        vm.handleLoadPressed()
+        
+        // Assert
+        waitForExpectations(timeout: 10) { err in
+            XCTAssert(listen.state! == .error)
+            XCTAssert(vm.state == .error)
+            XCTAssert(vm.cities.count == 0)
+        }
+        
+        // Arrange, Error -> Loading -> Loaded
+        expect = expectation(description: "Loaded expectation")
+        client.callbackHandler = { callback in
+            callback(.success(loadCitiesApiModel()))
+            expect.fulfill()
+        }
+        
+        // Act
+        vm.handleLoadPressed()
+        
+        // Assert
+        // Loaded w/ 3 cities
+        waitForExpectations(timeout: 5) { err in
+            XCTAssert(listen.state! == .loaded)
+            XCTAssert(vm.state == .loaded)
+            XCTAssert(vm.cities.count == 3)
+        }
+        
+    }
 }
