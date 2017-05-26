@@ -36,6 +36,7 @@
 		B1C7ECD71ED65DA9007516CB /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECD61ED65DA9007516CB /* Formatters.swift */; };
 		B1C7ECD91ED6675B007516CB /* ViewModelPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECD81ED6675B007516CB /* ViewModelPopulation.swift */; };
 		B1C7ECDB1ED7E0EC007516CB /* CityListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECDA1ED7E0EC007516CB /* CityListViewModelTests.swift */; };
+		B1C7ECDE1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECDD1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		B1C7ECD61ED65DA9007516CB /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		B1C7ECD81ED6675B007516CB /* ViewModelPopulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelPopulation.swift; sourceTree = "<group>"; };
 		B1C7ECDA1ED7E0EC007516CB /* CityListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewModelTests.swift; sourceTree = "<group>"; };
+		B1C7ECDD1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				B12A3E1F1ED56F39009994F1 /* melb_weather.json */,
 				B12A3E101ED5542B009994F1 /* OptusWeatherTests.swift */,
 				B1C7ECD81ED6675B007516CB /* ViewModelPopulation.swift */,
+				B1C7ECDD1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift */,
 			);
 			path = OptusWeatherTests;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1C7ECDE1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift in Sources */,
 				B12A3E111ED5542B009994F1 /* OptusWeatherTests.swift in Sources */,
 				B12A3E241ED56FC7009994F1 /* JsonDeserializeTests.swift in Sources */,
 				B12A3E221ED56F6D009994F1 /* Helpers.swift in Sources */,
