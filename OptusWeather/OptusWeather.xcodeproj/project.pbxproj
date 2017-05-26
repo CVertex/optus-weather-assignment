@@ -126,11 +126,9 @@
 				B12A3E251ED57157009994F1 /* Common */,
 				B12A3E1B1ED55848009994F1 /* Model */,
 				B12A3E421ED65466009994F1 /* ViewModel */,
+				B1C7ECDC1ED7F9A2007516CB /* View */,
 				B12A3DFB1ED5542A009994F1 /* AppDelegate.swift */,
-				B12A3DFD1ED5542A009994F1 /* ViewController.swift */,
-				B12A3DFF1ED5542A009994F1 /* Main.storyboard */,
 				B12A3E021ED5542B009994F1 /* Assets.xcassets */,
-				B12A3E041ED5542B009994F1 /* LaunchScreen.storyboard */,
 				B12A3E071ED5542B009994F1 /* Info.plist */,
 			);
 			path = OptusWeather;
@@ -195,6 +193,16 @@
 				B1C7ECD61ED65DA9007516CB /* Formatters.swift */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		B1C7ECDC1ED7F9A2007516CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B12A3E041ED5542B009994F1 /* LaunchScreen.storyboard */,
+				B12A3DFD1ED5542A009994F1 /* ViewController.swift */,
+				B12A3DFF1ED5542A009994F1 /* Main.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
