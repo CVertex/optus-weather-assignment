@@ -145,9 +145,9 @@
 				B12A3E121ED5542B009994F1 /* Info.plist */,
 				B12A3E231ED56FC7009994F1 /* JsonDeserializeTests.swift */,
 				B12A3E1F1ED56F39009994F1 /* melb_weather.json */,
+				B1C7ECDD1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift */,
 				B12A3E101ED5542B009994F1 /* OptusWeatherTests.swift */,
 				B1C7ECD81ED6675B007516CB /* ViewModelPopulation.swift */,
-				B1C7ECDD1ED7FA1B007516CB /* OpenWeatherMapClientTests.swift */,
 			);
 			path = OptusWeatherTests;
 			sourceTree = "<group>";
