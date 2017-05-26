@@ -23,7 +23,7 @@ public class OpenWeatherMapApiClient : ApiClient {
             } else if let data = data {
                 // We have data, let's try process it!
                 do {
-                    let details = try self.decodeCitiesWeather(data: data)
+                    let details = try OpenWeatherMapApiClient.decodeCitiesWeather(data: data)
                     callback(.success(details))
                 } catch {
                     callback(.failure(.decoding))
@@ -34,7 +34,7 @@ public class OpenWeatherMapApiClient : ApiClient {
     }
     
     /// Decode data into API model
-    public func decodeCitiesWeather(data:Data) throws -> [CityWeatherApiModel] {
+    public static func decodeCitiesWeather(data:Data) throws -> [CityWeatherApiModel] {
         let jsonRoot = try JSONSerialization.jsonObject(with: data)
         let json = jsonRoot as? [String:Any]
         if let j = json {
