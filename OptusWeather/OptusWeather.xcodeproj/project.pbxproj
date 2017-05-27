@@ -44,6 +44,7 @@
 		B1C7ECE91ED96A54007516CB /* OverlayBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECE81ED96A54007516CB /* OverlayBackgroundView.swift */; };
 		B1C7ECEB1ED96AD0007516CB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECEA1ED96AD0007516CB /* ErrorView.swift */; };
 		B1C7ECED1ED96BF2007516CB /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1C7ECEC1ED96BF2007516CB /* ErrorView.xib */; };
+		B1C7ECEF1ED970D8007516CB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7ECEE1ED970D8007516CB /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		B1C7ECE81ED96A54007516CB /* OverlayBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayBackgroundView.swift; sourceTree = "<group>"; };
 		B1C7ECEA1ED96AD0007516CB /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B1C7ECEC1ED96BF2007516CB /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		B1C7ECEE1ED970D8007516CB /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,10 +222,11 @@
 				B1C7ECEA1ED96AD0007516CB /* ErrorView.swift */,
 				B1C7ECEC1ED96BF2007516CB /* ErrorView.xib */,
 				B12A3E041ED5542B009994F1 /* LaunchScreen.storyboard */,
-				B1C7ECE81ED96A54007516CB /* OverlayBackgroundView.swift */,
 				B1C7ECE51ED92FF4007516CB /* LoadingView.swift */,
 				B1C7ECE31ED92F6A007516CB /* LoadingView.xib */,
 				B12A3DFF1ED5542A009994F1 /* Main.storyboard */,
+				B1C7ECE81ED96A54007516CB /* OverlayBackgroundView.swift */,
+				B1C7ECEE1ED970D8007516CB /* RoundedButton.swift */,
 				B12A3DFD1ED5542A009994F1 /* ViewController.swift */,
 			);
 			name = View;
@@ -357,6 +360,7 @@
 				B12A3DFC1ED5542A009994F1 /* AppDelegate.swift in Sources */,
 				B1C7ECE01ED8016F007516CB /* CityListController.swift in Sources */,
 				B1C7ECE21ED80264007516CB /* CityListCell.swift in Sources */,
+				B1C7ECEF1ED970D8007516CB /* RoundedButton.swift in Sources */,
 				B12A3E351ED5C322009994F1 /* CityWeatherModelManager.swift in Sources */,
 				B12A3E2D1ED5ADB9009994F1 /* ApiClient.swift in Sources */,
 				B12A3E2F1ED5B639009994F1 /* OpenWeatherMapApi.swift in Sources */,
