@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B12A3DFC1ED5542A009994F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12A3DFB1ED5542A009994F1 /* AppDelegate.swift */; };
-		B12A3DFE1ED5542A009994F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12A3DFD1ED5542A009994F1 /* ViewController.swift */; };
+		B12A3DFE1ED5542A009994F1 /* CityDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12A3DFD1ED5542A009994F1 /* CityDetailsController.swift */; };
 		B12A3E011ED5542A009994F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12A3DFF1ED5542A009994F1 /* Main.storyboard */; };
 		B12A3E031ED5542B009994F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B12A3E021ED5542B009994F1 /* Assets.xcassets */; };
 		B12A3E061ED5542B009994F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12A3E041ED5542B009994F1 /* LaunchScreen.storyboard */; };
@@ -60,7 +60,7 @@
 /* Begin PBXFileReference section */
 		B12A3DF81ED5542A009994F1 /* OptusWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptusWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12A3DFB1ED5542A009994F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B12A3DFD1ED5542A009994F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B12A3DFD1ED5542A009994F1 /* CityDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsController.swift; sourceTree = "<group>"; };
 		B12A3E001ED5542A009994F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B12A3E021ED5542B009994F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B12A3E051ED5542B009994F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -217,6 +217,7 @@
 		B1C7ECDC1ED7F9A2007516CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B12A3DFD1ED5542A009994F1 /* CityDetailsController.swift */,
 				B1C7ECE11ED80264007516CB /* CityListCell.swift */,
 				B1C7ECDF1ED8016F007516CB /* CityListController.swift */,
 				B1C7ECEA1ED96AD0007516CB /* ErrorView.swift */,
@@ -227,7 +228,6 @@
 				B12A3DFF1ED5542A009994F1 /* Main.storyboard */,
 				B1C7ECE81ED96A54007516CB /* OverlayBackgroundView.swift */,
 				B1C7ECEE1ED970D8007516CB /* RoundedButton.swift */,
-				B12A3DFD1ED5542A009994F1 /* ViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -350,7 +350,7 @@
 				B12A3E311ED5B663009994F1 /* OpenWeatherMapApiClient.swift in Sources */,
 				B12A3E1D1ED5586E009994F1 /* CityWeatherApiModel.swift in Sources */,
 				B12A3E461ED655EE009994F1 /* CityViewModel.swift in Sources */,
-				B12A3DFE1ED5542A009994F1 /* ViewController.swift in Sources */,
+				B12A3DFE1ED5542A009994F1 /* CityDetailsController.swift in Sources */,
 				B12A3E271ED5716A009994F1 /* Result.swift in Sources */,
 				B12A3E3B1ED5C55B009994F1 /* Condition.swift in Sources */,
 				B12A3E441ED65482009994F1 /* CityListViewModel.swift in Sources */,
