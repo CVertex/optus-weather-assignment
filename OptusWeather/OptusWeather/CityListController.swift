@@ -24,6 +24,8 @@ func makeVms() -> [Vm] {
 class CityListController: UITableViewController {
     
     var vm:[Vm]! = nil
+    var loadingView:LoadingView! = nil
+    var errorView: ErrorView! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,34 @@ class CityListController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         vm = makeVms()
+        
+        // Loading View
+        self.loadingView = LoadingView.create()
+        self.navigationController!.view.addSubview(self.loadingView)
+        self.navigationController!.view.bringSubview(toFront: self.loadingView)
+        
+        // Loading View layout
+        self.loadingView.translatesAutoresizingMaskIntoConstraints = false
+        let margins = self.navigationController!.view.layoutMarginsGuide
+        
+        self.loadingView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
+        self.loadingView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
+        
+        self.loadingView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        self.loadingView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        
+        self.loadingView.isHidden = true
+        
+        // Error View
+        self.errorView = ErrorView.create()
+        self.navigationController!.view.addSubview(self.errorView)
+        self.navigationController!.view.bringSubview(toFront: self.errorView)
+        // Error View layout
+        self.errorView.translatesAutoresizingMaskIntoConstraints = false
+        self.errorView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
+        self.errorView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
+        self.errorView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        self.errorView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
     }
 
     override func didReceiveMemoryWarning() {
