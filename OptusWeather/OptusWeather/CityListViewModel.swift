@@ -32,7 +32,6 @@ public class CityListViewModel {
     public var cities:[CityViewModel] = [CityViewModel]()
     var state:CityListViewModelState = .initial {
         didSet {
-            print("did set")
             // Notify state change
             self.delegate?.updateForState(state: self.state)
         }

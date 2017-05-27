@@ -8,67 +8,97 @@
 
 import UIKit
 
-struct Vm {
-    let city:String
-    let temp:String
-}
-
-func makeVms() -> [Vm] {
-    return [
-        Vm(city: "Sydney", temp: "23.9°"),
-        Vm(city: "Brisbane", temp: "23.9°"),
-        Vm(city: "Melbourne", temp: "45.2°")
-    ]
-}
-
-class CityListController: UITableViewController {
+class CityListController: UITableViewController, CityListViewModelDelegate {
     
-    var vm:[Vm]! = nil
+    // View Model
+    var viewModel:CityListViewModel! = nil
+    
+    // Views
     var loadingView:LoadingView! = nil
     var errorView: ErrorView! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        vm = makeVms()
-        
-        // Loading View
-        self.loadingView = LoadingView.create()
-        self.navigationController!.view.addSubview(self.loadingView)
-        self.navigationController!.view.bringSubview(toFront: self.loadingView)
-        
-        // Loading View layout
-        self.loadingView.translatesAutoresizingMaskIntoConstraints = false
-        let margins = self.navigationController!.view.layoutMarginsGuide
-        
-        self.loadingView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
-        self.loadingView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
-        
-        self.loadingView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-        self.loadingView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        
-        self.loadingView.isHidden = true
-        
-        // Error View
-        self.errorView = ErrorView.create()
-        self.navigationController!.view.addSubview(self.errorView)
-        self.navigationController!.view.bringSubview(toFront: self.errorView)
-        // Error View layout
-        self.errorView.translatesAutoresizingMaskIntoConstraints = false
-        self.errorView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
-        self.errorView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
-        self.errorView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-        self.errorView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        // Setup views
+        self.setupViews()
+        // ViewModel
+        self.viewModel = CityListViewModel(delegate: self, apiClient: OpenWeatherMapApiClient())
+        self.viewModel.handleLoadPressed() // Initiate load
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Setup Views
+    func setupViews() {
+        let margins = self.navigationController!.view.layoutMarginsGuide
+        
+        // Loading View
+        self.loadingView = LoadingView.create()
+        self.navigationController!.view.addSubview(self.loadingView)
+        self.navigationController!.view.bringSubview(toFront: self.loadingView)
+        // Fill and centre
+        self.loadingView.translatesAutoresizingMaskIntoConstraints = false
+        self.loadingView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
+        self.loadingView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
+        self.loadingView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        self.loadingView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        
+        // Error View
+        self.errorView = ErrorView.create()
+        self.navigationController!.view.addSubview(self.errorView)
+        self.navigationController!.view.bringSubview(toFront: self.errorView)
+        // Fill and centre
+        self.errorView.translatesAutoresizingMaskIntoConstraints = false
+        self.errorView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
+        self.errorView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
+        self.errorView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        self.errorView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        // Retry handler
+        self.errorView.retryButton.addTarget(self,
+                                             action: #selector(retryPressed),
+                                             for: .touchUpInside)
+        // Hide both by default
+        self.errorView.isHidden = true
+        self.loadingView.isHidden = true
+    }
+    
+    // MARK: - CityListViewModelDelegate
+    
+    func updateForState(state:CityListViewModelState) {
+        print("State \(state)")
+        
+        switch state {
+        case .initial:
+            self.errorView.isHidden = true
+            self.loadingView.isHidden = true
+            self.tableView.reloadData()
+            break
+        case .loading:
+            self.errorView.isHidden = true
+            self.loadingView.isHidden = false
+            self.loadingView.activityIndicator.startAnimating()
+            break
+        case .loaded:
+            self.errorView.isHidden = true
+            self.loadingView.isHidden = true
+            self.tableView.reloadData()
+            break
+        
+        case .error:
+            self.loadingView.isHidden = true
+            self.errorView.isHidden = false
+            break
+        }
+    }
+    
+    // MARK: - Event Handlers
+    
+    func retryPressed() {
+        print("Retry pressed")
+        self.viewModel.handleLoadPressed()
     }
 
     // MARK: - Table view data source
@@ -78,17 +108,19 @@ class CityListController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.count
+        if self.viewModel == nil {
+            return 0
+        }
+        return self.viewModel.cities.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListCell", for: indexPath)
         
         if let c = cell as? CityListCell {
-            let vm = self.vm[indexPath.row]
-            c.cityLabel.text = vm.city
-            c.temperatureLabel.text = vm.temp
+            let city = self.viewModel.cities[indexPath.row]
+            c.cityLabel.text = city.name
+            c.temperatureLabel.text = city.temperature
         }
 
         return cell
