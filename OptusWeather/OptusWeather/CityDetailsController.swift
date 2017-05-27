@@ -12,8 +12,7 @@ class CityDetailsController: UIViewController {
     
     var city: CityViewModel? {
         didSet {
-            // TODO: load view model
-            print("Loaded City!!")
+            self.update()
         }
     }
 
@@ -56,9 +55,7 @@ class CityDetailsController: UIViewController {
                         print("Showing complete")
                     }
                  }
-                
             }
-            
         }
         
         
@@ -96,6 +93,23 @@ class CityDetailsController: UIViewController {
         }
         
         */
+    }
+
+
+    // MARK: - Update
+    
+    func update() {
+        guard let city = self.city else {
+            return
+        }
+        
+        // Update name
+        self.title = city.name
+        
+        // Update other properties
+        // TODO: update 
+        // TODO: check the state so we're loading at correct time
+        // Animate to present
     }
 }
 
