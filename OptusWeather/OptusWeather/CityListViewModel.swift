@@ -32,8 +32,11 @@ public class CityListViewModel {
     public var cities:[CityViewModel] = [CityViewModel]()
     var state:CityListViewModelState = .initial {
         didSet {
-            // Notify state change
-            self.delegate?.updateForState(state: self.state)
+            DispatchQueue.main.async {
+                // Notify state change
+                self.delegate?.updateForState(state: self.state)
+            }
+            
         }
     }
     
