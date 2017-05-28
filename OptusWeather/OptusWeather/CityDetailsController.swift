@@ -16,18 +16,14 @@ class CityDetailsController: UIViewController {
         }
     }
 
-    /*
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!
-    @IBOutlet weak var label4: UILabel!
-    @IBOutlet weak var label5: UILabel!
- */
-    
     // Rows
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var view4: UIView!
+    @IBOutlet weak var view5: UIView!
+    @IBOutlet weak var view6: UIView!
+    
     
     // Label
     @IBOutlet weak var cityLabel: UILabel!
@@ -49,77 +45,39 @@ class CityDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        //self.view1.isHidden = true
-        //self.view2.isHidden = true
-        //self.view3.isHidden = true
-        
-        let dur:TimeInterval = 0.5
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-        
-            print("Let's go show everything!")
-            
-            UIView.animate(withDuration: dur, animations: {
-                self.view2.isHidden = false
-            }) { finished in
-                 UIView.animate(withDuration: dur, animations: {
-                    self.view3.isHidden = false
-                 }) { finished in
-                    
-                    UIView.animate(withDuration: dur, animations: {
-                        //self.view3.isHidden = false
-                    }) { finished in
-                        print("Showing complete")
-                    }
-                 }
-            }
-        }
-        
-        
-        
-        /*
-        self.label1.isHidden = true
-        self.label2.isHidden = true
-        self.label3.isHidden = true
-        self.label4.isHidden = true
-        self.label5.isHidden = true
-        let dur:TimeInterval = 0.3
-        
-        UIView.animate(withDuration: dur, animations: {
-            self.label1.isHidden = false
-        }) { finished in
-        
-            UIView.animate(withDuration: dur, animations: {
-                self.label2.isHidden = false
-            }) { finished in
-                UIView.animate(withDuration: dur, animations: {
-                    self.label3.isHidden = false
-                }) { finished in
-                    
-                    UIView.animate(withDuration: dur, animations: {
-                        self.label4.isHidden = false
-                    }) { finished in
-                        
-                        UIView.animate(withDuration: dur, animations: {
-                            self.label5.isHidden = false
-                        }) { finished in
-                        }
-                    }
-                }
-            }
-        }
-        
-        */
+        self.showRows()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         update()
     }
 
-
+    // MARK: - Animation
+    
+    func showRows() {
+        
+        // Only animate if shown
+        if !self.view2.isHidden {
+            return
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            self.showRow(view: self.view2)
+            self.showRow(view: self.view3)
+            self.showRow(view: self.view4)
+            self.showRow(view: self.view5)
+            self.showRow(view: self.view6)
+        }
+    }
+    
+    func showRow(view: UIView) {
+        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: [], animations: {
+            view.alpha = 1.0
+            view.isHidden = false
+        }, completion: nil)
+    }
+    
     // MARK: - Update
     
     func update() {
@@ -130,7 +88,6 @@ class CityDetailsController: UIViewController {
         guard let city = self.city else {
             return
         }
-        
         
         // Update name
         self.title = city.name
@@ -146,9 +103,6 @@ class CityDetailsController: UIViewController {
         self.humidityLabel.text = city.humidity
         self.pressureLabel.text = city.pressure
         self.visibilityLabel.text = city.visibility
-        
-        // TODO Animate to present
-        
     }
 }
 
