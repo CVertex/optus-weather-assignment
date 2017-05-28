@@ -24,10 +24,28 @@ class CityDetailsController: UIViewController {
     @IBOutlet weak var label5: UILabel!
  */
     
+    // Rows
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
     
+    // Label
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    
+    @IBOutlet weak var sunsetLabel: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    
+    @IBOutlet weak var cloudsLabel: UILabel!
+    @IBOutlet weak var rainLabel: UILabel!
+    
+    @IBOutlet weak var pressureLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    
+    @IBOutlet weak var visibilityLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,22 +112,43 @@ class CityDetailsController: UIViewController {
         
         */
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        update()
+    }
 
 
     // MARK: - Update
     
     func update() {
+        if !isViewLoaded {
+            return
+        }
+        
         guard let city = self.city else {
             return
         }
         
+        
         // Update name
         self.title = city.name
+        self.cityLabel.text = city.name
+        self.tempLabel.text = city.temperature
+        self.conditionLabel.text = city.condition
+        self.minTempLabel.text = city.temperatureMinimum
+        self.maxTempLabel.text = city.temperatureMaximum
+        self.sunriseLabel.text = city.sunrise
+        self.sunsetLabel.text = city.sunset
+        self.cloudsLabel.text = city.cloudiness
+        self.rainLabel.text = city.rainVolume
+        self.humidityLabel.text = city.humidity
+        self.pressureLabel.text = city.pressure
+        self.visibilityLabel.text = city.visibility
         
-        // Update other properties
-        // TODO: update 
-        // TODO: check the state so we're loading at correct time
-        // Animate to present
+        // TODO Animate to present
+        
     }
 }
 
