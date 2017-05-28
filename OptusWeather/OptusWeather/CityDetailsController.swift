@@ -63,6 +63,12 @@ class CityDetailsController: UIViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            self.view2.alpha = 0.0
+            self.view3.alpha = 0.0
+            self.view4.alpha = 0.0
+            self.view5.alpha = 0.0
+            self.view6.alpha = 0.0
+            
             self.showRow(view: self.view2)
             self.showRow(view: self.view3)
             self.showRow(view: self.view4)
@@ -72,7 +78,7 @@ class CityDetailsController: UIViewController {
     }
     
     func showRow(view: UIView) {
-        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: [], animations: {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: [], animations: {
             view.alpha = 1.0
             view.isHidden = false
         }, completion: nil)
