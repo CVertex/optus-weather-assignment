@@ -11,19 +11,19 @@ import Foundation
 /// Weather info
 public struct Weather {
     /// Temperature
-    let temperature:Temperature
+    let temperature: Temperature
     /// Condition
-    let condition:Condition
+    let condition: Condition
     /// Wind
     let wind: Wind
     /// Pressure in hPa
-    let pressure : Float
+    let pressure: Float
     /// Humidity in %
-    let humidity : Float
+    let humidity: Float
     /// % Cloudiness
     let cloudiness: Float
     /// Rain Volume (unknown units) in last 3h
     let rainVolume: Float
     /// Visibility in meters
-    let visibility:Int64
+    let visibility: Int64
 }

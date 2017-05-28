@@ -11,7 +11,7 @@ import Foundation
 /// Wind details
 public struct Wind {
     /// Wind speed in m/s
-    let speed:Float
+    let speed: Float
     /// Wind direction, degrees (meteorological)
     let direction: Float
 }
