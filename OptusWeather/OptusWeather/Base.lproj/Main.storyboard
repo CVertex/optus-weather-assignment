@@ -168,8 +168,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-ZL-Gil">
-                                                <rect key="frame" x="116" y="41" width="66.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-ZL-Gil">
+                                                <rect key="frame" x="120" y="41" width="62.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -318,9 +318,21 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityLabel" destination="IgX-fJ-NQJ" id="2OP-t1-1yW"/>
+                        <outlet property="cloudsLabel" destination="KPo-ds-FCp" id="dKg-EY-dmT"/>
+                        <outlet property="conditionLabel" destination="RFq-il-iUL" id="ouK-VG-NuL"/>
+                        <outlet property="humidityLabel" destination="2wU-ko-WeA" id="c46-RB-ZRM"/>
+                        <outlet property="maxTempLabel" destination="PX5-x3-xgh" id="Hqz-bz-BPr"/>
+                        <outlet property="minTempLabel" destination="3V7-T3-oxY" id="ntY-5x-PTv"/>
+                        <outlet property="pressureLabel" destination="dLE-y6-Asu" id="kZu-Uf-ZoJ"/>
+                        <outlet property="rainLabel" destination="1WD-qj-m4i" id="9oe-Qb-ArO"/>
+                        <outlet property="sunriseLabel" destination="Gs8-NS-GKK" id="jVW-Fe-Gei"/>
+                        <outlet property="sunsetLabel" destination="f1C-X0-cb6" id="M0p-UI-8XW"/>
+                        <outlet property="tempLabel" destination="tj9-uk-XXH" id="Nb3-0n-EhX"/>
                         <outlet property="view1" destination="ewL-Me-82s" id="zy3-RR-mg8"/>
                         <outlet property="view2" destination="5mp-sX-26H" id="sF7-29-vVR"/>
                         <outlet property="view3" destination="NCn-iN-GJu" id="XIo-Kh-mtt"/>
+                        <outlet property="visibilityLabel" destination="q0i-g6-FDj" id="jNb-ju-ibe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlD-Jo-v54" userLabel="First Responder" sceneMemberID="firstResponder"/>
