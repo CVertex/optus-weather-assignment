@@ -9,36 +9,30 @@
 import UIKit
 
 public struct CityViewModel {
-    
     /// City Name
     let name: String
     /// City country code
     let country: String
-    
     /// City Hue (0.0 - 1.0)
     let hue: CGFloat
-    
     /// Temperature (celcius) e.g. 27.9°
     let temperature: String
     /// Temperature, min (celcius) e.g. 27.9°
     let temperatureMinimum: String
     /// Temperature, max (celcius)
     let temperatureMaximum: String
-    
     /// Condition, a description of the weather condition. e.g. cloudy with rain
     let condition: String
     /// URL of an icon visualizing the condition. e.g. http://blah.com/ICO.png
     let conditionIconUrl: String
-    
     /// Time of sunrise e.g. 8:30
     let sunrise: String
     /// Time of sunset e.g. 17:30
     let sunset: String
-    
     /// Pressure in hPa e.g. 1000hPa
-    let pressure : String
+    let pressure: String
     /// Humidity in % e.g. 30%
-    let humidity : String
+    let humidity: String
     /// % Cloudiness. e.g. 12%
     let cloudiness: String
     /// Rain Volume (millimeters). e.g 3mm
@@ -47,11 +41,8 @@ public struct CityViewModel {
     let visibility: String
 }
 
-
 public extension CityViewModel {
-    
-    public init(city:City) {
-        
+    public init(city: City) {
         self.name = city.name
         self.country = city.country
         self.temperature = Formatters.tempToString(value: city.weather.temperature.value)
@@ -68,5 +59,4 @@ public extension CityViewModel {
         self.rainVolume = Formatters.rainVolumeToString(value: city.weather.rainVolume)
         self.hue = CityHues.hue(city: city.name)
     }
-    
 }

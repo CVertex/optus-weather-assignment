@@ -9,9 +9,8 @@
 import UIKit
 
 public struct CityHues {
-    
     /// return a Hue (0 - 1.0) for a city name
-    public static func hue(city:String) -> CGFloat {
+    public static func hue(city: String) -> CGFloat {
         switch city {
         case "Sydney":
             return 0.4
@@ -22,7 +21,5 @@ public struct CityHues {
         default:
             return 0.2
         }
-        
     }
-    
 }

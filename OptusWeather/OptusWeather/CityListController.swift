@@ -9,12 +9,10 @@
 import UIKit
 
 class CityListController: UITableViewController, CityListViewModelDelegate {
-    
     // View Model
-    var viewModel:CityListViewModel! = nil
-    
+    var viewModel: CityListViewModel! = nil
     // Views
-    var loadingView:LoadingView! = nil
+    var loadingView: LoadingView! = nil
     var errorView: ErrorView! = nil
 
     override func viewDidLoad() {
@@ -30,11 +28,10 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: - Setup Views
     func setupViews() {
         let margins = self.navigationController!.view.layoutMarginsGuide
-        
         // Loading View
         self.loadingView = LoadingView.create()
         self.navigationController!.view.addSubview(self.loadingView)
@@ -45,7 +42,6 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
         self.loadingView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
         self.loadingView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
         self.loadingView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        
         // Error View
         self.errorView = ErrorView.create()
         self.navigationController!.view.addSubview(self.errorView)
@@ -64,12 +60,10 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
         self.errorView.isHidden = true
         self.loadingView.isHidden = true
     }
-    
+
     // MARK: - CityListViewModelDelegate
-    
-    func updateForState(state:CityListViewModelState) {
+    func updateForState(state: CityListViewModelState) {
         print("State \(state)")
-        
         switch state {
         case .initial:
             self.errorView.isHidden = true
@@ -86,16 +80,14 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
             self.loadingView.isHidden = true
             self.tableView.reloadData()
             break
-        
         case .error:
             self.loadingView.isHidden = true
             self.errorView.isHidden = false
             break
         }
     }
-    
+
     // MARK: - Event Handlers
-    
     func retryPressed() {
         print("Retry pressed")
         self.viewModel.handleLoadPressed()
@@ -114,9 +106,9 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
         return self.viewModel.cities.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListCell", for: indexPath)
-        
         if let c = cell as? CityListCell {
             let city = self.viewModel.cities[indexPath.row]
             c.cityLabel.text = city.name
@@ -129,20 +121,16 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
 
         return cell
     }
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Pass the CityVM to Details VC
         if let selectedCell = sender as? CityListCell,
-            let indexPath = tableView.indexPath(for: selectedCell),
-            let destination = segue.destination as? CityDetailsController {
-            
+           let indexPath = tableView.indexPath(for: selectedCell),
+           let destination = segue.destination as? CityDetailsController {
             // Lookup the City VM
             let cityVm = viewModel.cities[indexPath.row]
             destination.city = cityVm
         }
     }
-    
-
 }

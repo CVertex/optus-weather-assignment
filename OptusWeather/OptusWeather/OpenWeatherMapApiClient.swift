@@ -9,13 +9,13 @@
 import Foundation
 
 /// API Client using OpenWeatherMap web service
-public class OpenWeatherMapApiClient : ApiClient {
-    
+public class OpenWeatherMapApiClient: ApiClient {
+
     public func fetchCitiesWeather(callback:  @escaping CityWeatherCallback) {
         let urlString = OpenWeatherMapApi.weatherForSydneyMelbourneAndBrisbane()
         let url = URL(string: urlString)!
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
-        
+
         let dataTask = defaultSession.dataTask(with: url) { data, response, error in
             if error != nil {
                 // Network problem
@@ -32,9 +32,9 @@ public class OpenWeatherMapApiClient : ApiClient {
         }
         dataTask.resume()
     }
-    
+
     /// Decode data into API model
-    public static func decodeCitiesWeather(data:Data) throws -> [CityWeatherApiModel] {
+    public static func decodeCitiesWeather(data: Data) throws -> [CityWeatherApiModel] {
         let jsonRoot = try JSONSerialization.jsonObject(with: data)
         print(jsonRoot)
         let json = jsonRoot as? [String:Any]
@@ -44,16 +44,14 @@ public class OpenWeatherMapApiClient : ApiClient {
             guard let list = j["list"] as? [[String:Any]] else {
                 throw ApiError.decoding
             }
-            
+
             for item in list {
                 let m = try CityWeatherApiModel(json: item)
                 models.append(m)
             }
-            
             return models
         } else {
             throw ApiError.decoding
         }
     }
 }
-

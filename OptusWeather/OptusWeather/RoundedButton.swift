@@ -9,8 +9,8 @@
 import UIKit
 import QuartzCore
 
-@IBDesignable public class RoundedButton : UIButton {
-    
+@IBDesignable public class RoundedButton: UIButton {
+
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
@@ -27,7 +27,7 @@ import QuartzCore
             layer.borderColor = borderColor?.cgColor
         }
     }
-    
+
     public override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
