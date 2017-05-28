@@ -4,5 +4,6 @@
         <page name='ApiUrls'/>
         <page name='UnixDate'/>
         <page name='Formatting'/>
+        <page name='Colors'/>
     </pages>
 </playground>
