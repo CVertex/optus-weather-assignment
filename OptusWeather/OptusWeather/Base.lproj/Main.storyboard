@@ -89,14 +89,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgX-fJ-NQJ">
-                                                <rect key="frame" x="20" y="32" width="53" height="36"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <rect key="frame" x="20" y="26.5" width="68.5" height="47"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-uk-XXH">
-                                                <rect key="frame" x="302.5" y="27.5" width="52.5" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <rect key="frame" x="288" y="19" width="67" height="32.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -115,10 +115,10 @@
                                             <constraint firstItem="RFq-il-iUL" firstAttribute="centerY" secondItem="ewL-Me-82s" secondAttribute="centerY" constant="20" id="I7j-u0-Hnd"/>
                                             <constraint firstAttribute="trailing" secondItem="tj9-uk-XXH" secondAttribute="trailing" constant="20" id="g26-Cu-vj4"/>
                                             <constraint firstItem="IgX-fJ-NQJ" firstAttribute="leading" secondItem="ewL-Me-82s" secondAttribute="leading" constant="20" id="k5F-5c-tss"/>
-                                            <constraint firstItem="tj9-uk-XXH" firstAttribute="centerY" secondItem="ewL-Me-82s" secondAttribute="centerY" constant="-10" id="ukV-nQ-Vtw"/>
+                                            <constraint firstItem="tj9-uk-XXH" firstAttribute="centerY" secondItem="ewL-Me-82s" secondAttribute="centerY" constant="-15" id="ukV-nQ-Vtw"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mp-sX-26H">
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mp-sX-26H">
                                         <rect key="frame" x="0.0" y="100" width="375" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum : " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avr-N1-3ZB">
@@ -159,7 +159,7 @@
                                             <constraint firstItem="Avr-N1-3ZB" firstAttribute="top" secondItem="5mp-sX-26H" secondAttribute="top" constant="10" id="usj-gs-isc"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCn-iN-GJu">
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCn-iN-GJu">
                                         <rect key="frame" x="0.0" y="170" width="375" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnI-So-820">
@@ -200,7 +200,7 @@
                                             <constraint firstItem="VnI-So-820" firstAttribute="trailing" secondItem="NCn-iN-GJu" secondAttribute="centerX" constant="-5" id="mu5-zw-qOg"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGZ-6j-4og" userLabel="View4">
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGZ-6j-4og" userLabel="View4">
                                         <rect key="frame" x="0.0" y="240" width="375" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clouds :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61j-JS-zvs">
@@ -241,7 +241,7 @@
                                             <constraint firstItem="v5k-Jk-tjS" firstAttribute="trailing" secondItem="BGZ-6j-4og" secondAttribute="centerX" constant="-5" id="wF5-gz-uM1"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxP-Qi-0Hc" userLabel="View5">
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxP-Qi-0Hc" userLabel="View5">
                                         <rect key="frame" x="0.0" y="310" width="375" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wU-ko-WeA">
@@ -282,7 +282,7 @@
                                             <constraint firstItem="2wU-ko-WeA" firstAttribute="baseline" secondItem="6hR-PK-WnF" secondAttribute="baseline" id="vXg-HM-7QU"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ob-Db-T8T" userLabel="View6">
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ob-Db-T8T" userLabel="View6">
                                         <rect key="frame" x="0.0" y="380" width="375" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0i-g6-FDj">
