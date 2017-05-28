@@ -126,7 +126,12 @@ class CityDetailsController: UIViewController {
     // MARK: - Helpers
     
     func cityColor(saturation:CGFloat) -> UIColor {
-        return UIColor(hue: 0.9,
+        var hue :CGFloat = 0.2
+        if let c = city {
+            hue = c.hue
+        }
+        
+        return UIColor(hue: hue,
                        saturation: saturation,
                        brightness: 1.0,
                        alpha: 1.0)

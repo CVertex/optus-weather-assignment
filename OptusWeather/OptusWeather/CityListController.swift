@@ -121,6 +121,10 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
             let city = self.viewModel.cities[indexPath.row]
             c.cityLabel.text = city.name
             c.temperatureLabel.text = city.temperature
+            c.backgroundColor = UIColor(hue: city.hue,
+                                        saturation: 0.5,
+                                        brightness: 1.0,
+                                        alpha: 1.0)
         }
 
         return cell

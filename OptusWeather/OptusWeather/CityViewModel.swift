@@ -6,7 +6,7 @@
 //  Copyright © 2017 Vijay Santhanam. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public struct CityViewModel {
     
@@ -14,6 +14,9 @@ public struct CityViewModel {
     let name: String
     /// City country code
     let country: String
+    
+    /// City Hue (0.0 - 1.0)
+    let hue: CGFloat
     
     /// Temperature (celcius) e.g. 27.9°
     let temperature: String
@@ -63,6 +66,7 @@ public extension CityViewModel {
         self.humidity = Formatters.percentageToString(value: city.weather.humidity)
         self.cloudiness = Formatters.percentageToString(value: city.weather.cloudiness)
         self.rainVolume = Formatters.rainVolumeToString(value: city.weather.rainVolume)
+        self.hue = CityHues.hue(city: city.name)
     }
     
 }
