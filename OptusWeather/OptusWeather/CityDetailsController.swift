@@ -45,15 +45,27 @@ class CityDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.colorRows()
         self.showRows()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Update on appearance
         update()
     }
 
-    // MARK: - Animation
+    // MARK: - View Setup and Animation
+    
+    func colorRows() {
+        // Color all the background rows
+        self.view1.backgroundColor = cityColor(saturation:0.6)
+        self.view2.backgroundColor = cityColor(saturation:0.5)
+        self.view3.backgroundColor = cityColor(saturation:0.40)
+        self.view4.backgroundColor = cityColor(saturation:0.30)
+        self.view5.backgroundColor = cityColor(saturation:0.20)
+        self.view6.backgroundColor = cityColor(saturation:0.1)
+    }
     
     func showRows() {
         
@@ -109,6 +121,15 @@ class CityDetailsController: UIViewController {
         self.humidityLabel.text = city.humidity
         self.pressureLabel.text = city.pressure
         self.visibilityLabel.text = city.visibility
+    }
+    
+    // MARK: - Helpers
+    
+    func cityColor(saturation:CGFloat) -> UIColor {
+        return UIColor(hue: 0.9,
+                       saturation: saturation,
+                       brightness: 1.0,
+                       alpha: 1.0)
     }
 }
 
