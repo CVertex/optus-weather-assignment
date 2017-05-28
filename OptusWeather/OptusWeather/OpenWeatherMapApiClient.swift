@@ -36,6 +36,7 @@ public class OpenWeatherMapApiClient : ApiClient {
     /// Decode data into API model
     public static func decodeCitiesWeather(data:Data) throws -> [CityWeatherApiModel] {
         let jsonRoot = try JSONSerialization.jsonObject(with: data)
+        print(jsonRoot)
         let json = jsonRoot as? [String:Any]
         if let j = json {
             // Convert the JSON array into list of CityWeathers
