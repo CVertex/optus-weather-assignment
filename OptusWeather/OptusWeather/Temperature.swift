@@ -10,11 +10,10 @@ import Foundation
 
 // Temperature
 public struct Temperature {
-    
     /// Temperature in Celcius
-    let value:Float
+    let value: Float
     /// Min temperature in Celcius
-    let minimum:Float
+    let minimum: Float
     /// Max temperature in Celcius
-    let maximum:Float
+    let maximum: Float
 }

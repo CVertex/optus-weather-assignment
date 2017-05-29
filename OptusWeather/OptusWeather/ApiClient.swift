@@ -8,10 +8,10 @@
 
 import Foundation
 
-public typealias CityWeatherCallback = (Result<[CityWeatherApiModel],ApiError>) -> Void
+public typealias CityWeatherCallback = (Result<[CityWeatherApiModel], ApiError>) -> Void
 
 // API Error
-public enum ApiError : Error {
+public enum ApiError: Error {
     case network
     case decoding
 }

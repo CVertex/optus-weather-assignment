@@ -8,17 +8,14 @@
 
 import UIKit
 
-// Disable rotation 
+// Disable rotation
 extension UINavigationController {
-    
+
     open override var shouldAutorotate: Bool {
         return false
     }
-    
+
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        
         return UIInterfaceOrientationMask.portrait
     }
-    
 }
-

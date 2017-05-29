@@ -1,5 +1,4 @@
 //: [Previous](@previous)
-
 import Foundation
 
 /// API URL generator

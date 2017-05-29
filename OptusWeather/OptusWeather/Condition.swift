@@ -11,9 +11,9 @@ import Foundation
 /// Condition summary
 public struct Condition {
     /// Name (Rain, Snow, Extreme etc.)
-    let name:String
+    let name: String
     /// Description
-    let description:String
+    let description: String
     /// Icon URL
-    let iconUrl:String
+    let iconUrl: String
 }

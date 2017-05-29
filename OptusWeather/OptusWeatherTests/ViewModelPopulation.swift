@@ -5,6 +5,7 @@
 //  Created by Vijay Santhanam on 25/05/2017.
 //  Copyright © 2017 Vijay Santhanam. All rights reserved.
 //
+// swiftlint:disable function_body_length
 
 import XCTest
 @testable import OptusWeather
@@ -12,17 +13,14 @@ import XCTest
 
 /// Tests creation of view model
 class ViewModelPopulation: XCTestCase {
-    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testCityViewModel() {
         // Arrange
         // Location
@@ -31,7 +29,6 @@ class ViewModelPopulation: XCTestCase {
         // Sun
         let sun = Sun(sunrise: Date(timeIntervalSince1970: TimeInterval(1495609976)),
                        sunset: Date(timeIntervalSince1970: TimeInterval(1495609976)))
-        
         // Temperature, Wind and Condition
         let temp = Temperature(value: 12.2323,
                                minimum: 10.12434,
@@ -50,17 +47,17 @@ class ViewModelPopulation: XCTestCase {
                                cloudiness: 23.34,
                                rainVolume: 23.34,
                                visibility: 1000)
-        
+
         let city = City(id: 100,
                         name: "Sydney",
                         country: "AU",
                         location: location,
                         weather: weather,
                         sun: sun)
-        
+
         // Act
         let vm = CityViewModel(city: city)
-        
+
         // Assert
         XCTAssert(vm.name == "Sydney")
         XCTAssert(vm.country == "AU")
@@ -77,7 +74,4 @@ class ViewModelPopulation: XCTestCase {
         XCTAssert(vm.temperatureMaximum == "30.8°")
         XCTAssert(vm.visibility == "1,000m")
     }
-    
-    
-    
 }

@@ -6,56 +6,59 @@
 //  Copyright © 2017 Vijay Santhanam. All rights reserved.
 //
 
+// swiftlint:disable line_length
+// swiftlint:disable function_body_length
+// swiftlint:disable variable_name
+// swiftlint:disable cyclomatic_complexity
+
 import Foundation
 
 /// Flattened API model of a city weather
 public struct CityWeatherApiModel {
     /// City ID
-    let id:Int64
+    let id: Int64
     /// City Name
-    let name:String
+    let name: String
     /// City country code
-    let country:String
+    let country: String
     /// City latitude
-    let latitude:Double
+    let latitude: Double
     /// City longitude
-    let longitude:Double
-    
+    let longitude: Double
     /// Temperature in Celcius
-    let temperature:Float
+    let temperature: Float
     /// Min temperature in Celcius
-    let temperatureMinimum:Float
+    let temperatureMinimum: Float
     /// Max temperature in Celcius
-    let temperatureMaximum:Float
+    let temperatureMaximum: Float
     /// Pressure in hPa
-    let pressure : Float
+    let pressure: Float
     /// Humidity in %
-    let humidity : Float
+    let humidity: Float
     /// % Cloudiness
     let cloudiness: Float
     /// Rain Volume in last 3h
     let rainVolume: Float
     /// Wind speed in m/s
-    let windSpeed:Float
+    let windSpeed: Float
     /// Wind direction, degrees (meteorological)
     let windDirection: Float
     /// Visibility in meters
-    let visibility:Int64
-    
+    let visibility: Int64
     /// Time of Sunrise in unix time
-    let sunrise:Int64
+    let sunrise: Int64
     /// Time of Sunset in unix time
-    let sunset:Int64
-
+    let sunset: Int64
     /// Weather condition name (Rain, Snow, Extreme etc.)
-    let weatherConditionName:String
+    let weatherConditionName: String
     /// Weather condition description
-    let weatherConditionDescription:String
+    let weatherConditionDescription: String
     /// Weather condition icon code
-    let weatherConditionIcon:String
+    let weatherConditionIcon: String
 }
 
 public extension CityWeatherApiModel {
+
     public init(json: [String: Any]) throws {
         // Extract properties
         guard let name = json["name"] as? String else {
@@ -86,8 +89,7 @@ public extension CityWeatherApiModel {
             throw SerializationError.missing("main")
         }
         let rain = json["rain"] as? [String:Any]
-        
-        
+
         // Coord
         guard let latitude = coord["lat"] as? Double else {
             throw SerializationError.missing("coord.lat")
@@ -95,7 +97,7 @@ public extension CityWeatherApiModel {
         guard let longitude = coord["lon"] as? Double else {
             throw SerializationError.missing("coord.lon")
         }
-    
+
         // Sys
         guard let country = sys["country"] as? String else {
             throw SerializationError.missing("sys.country")
@@ -106,12 +108,12 @@ public extension CityWeatherApiModel {
         guard let sunset = sys["sunset"] as? Int64 else {
             throw SerializationError.missing("sys.sunset")
         }
-        
+
         // Clouds
         guard let cloudiness = clouds["all"] as? Float else {
             throw SerializationError.missing("clouds.cloudiness")
         }
-        
+
         // Weather
         if weatherArray.count < 1 {
             throw SerializationError.missing("weather")
@@ -128,7 +130,7 @@ public extension CityWeatherApiModel {
         guard let condIcon = weather["icon"] as? String else {
             throw SerializationError.missing("weather.icon")
         }
-        
+
         // Wind
         guard let windSpeed = wind["speed"] as? Float else {
             throw SerializationError.missing("wind.speed")
@@ -136,13 +138,13 @@ public extension CityWeatherApiModel {
         guard let windDir = wind["deg"] as? Float else {
             throw SerializationError.missing("wind.deg")
         }
-        
+
         // Rain
-        var rainVolume:Float = 0.0
+        var rainVolume: Float = 0.0
         if let r = rain {
             rainVolume = (r["3h"] as? Float) ?? 0.0
         }
-        
+
         // Main
         guard let temp = main["temp"] as? Float else {
             throw SerializationError.missing("main.temp")
@@ -159,7 +161,7 @@ public extension CityWeatherApiModel {
         guard let humidity = main["humidity"] as? Float else {
             throw SerializationError.missing("main.humidity")
         }
-        
+
         // Init properties
         self.name = name
         self.id = id

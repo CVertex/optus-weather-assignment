@@ -16,30 +16,26 @@ public enum CityListViewModelState {
     case error
 }
 
-
 public protocol CityListViewModelDelegate : class {
-    func updateForState(state:CityListViewModelState)
+    func updateForState(state: CityListViewModelState)
 }
 
 public class CityListViewModel {
     /// Dependencies
-    let modelManager:CityWeatherModelManager
-    
+    let modelManager: CityWeatherModelManager
     /// Delegate
     weak var delegate: CityListViewModelDelegate?
-    
     /// State
-    public var cities:[CityViewModel] = [CityViewModel]()
-    var state:CityListViewModelState = .initial {
+    public var cities: [CityViewModel] = [CityViewModel]()
+    var state: CityListViewModelState = .initial {
         didSet {
             DispatchQueue.main.async {
                 // Notify state change
                 self.delegate?.updateForState(state: self.state)
             }
-            
         }
     }
-    
+
     /// Init
     public init(delegate: CityListViewModelDelegate, apiClient: ApiClient) {
         self.delegate = delegate
@@ -49,14 +45,13 @@ public class CityListViewModel {
         // Manually notify delegate
         self.delegate?.updateForState(state: .initial)
     }
-    
+
     // MARK: Public actions
-    
     public func handleLoadPressed() {
         if self.state == .loading {
             return // Already loading
         }
-        
+
         self.state = .loading // Loading
         self.modelManager.loadCities { result in
             switch result {
@@ -68,11 +63,6 @@ public class CityListViewModel {
                 self.state = .loaded
                 break
             }
-            
         }
     }
-
 }
-
-
-

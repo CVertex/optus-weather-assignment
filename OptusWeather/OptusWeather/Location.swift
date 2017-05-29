@@ -11,7 +11,7 @@ import Foundation
 /// Location
 public struct Location {
     /// latitude
-    let latitude:Double
+    let latitude: Double
     /// longitude
-    let longitude:Double
+    let longitude: Double
 }

@@ -9,7 +9,7 @@ import UIKit
 import QuartzCore
 
 @IBDesignable public class OverlayBackgroundView: UIView {
-    
+
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius

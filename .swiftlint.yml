@@ -1,0 +1,20 @@
+disabled_rules: # rule identifiers to exclude from running
+  - valid_docs
+  - conditional_binding_cascade
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Playground.playground
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 50
+  excluded: 
+    - iPhone
+    - Sun
+variable_name:
+  min_length: # only min_length
+    error: 3 # only error
+  excluded: 
+    - id
+    - Url
+    - Api
