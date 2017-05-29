@@ -15,11 +15,11 @@ public struct CityViewModel {
     let country: String
     /// City Hue (0.0 - 1.0)
     let hue: CGFloat
-    /// Temperature (celcius) e.g. 27.9°
+    /// Temperature (celsius) e.g. 27.9°
     let temperature: String
-    /// Temperature, min (celcius) e.g. 27.9°
+    /// Temperature, min (celsius) e.g. 27.9°
     let temperatureMinimum: String
-    /// Temperature, max (celcius)
+    /// Temperature, max (celsius)
     let temperatureMaximum: String
     /// Condition, a description of the weather condition. e.g. cloudy with rain
     let condition: String

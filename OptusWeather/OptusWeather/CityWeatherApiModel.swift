@@ -25,11 +25,11 @@ public struct CityWeatherApiModel {
     let latitude: Double
     /// City longitude
     let longitude: Double
-    /// Temperature in Celcius
+    /// Temperature in celsius
     let temperature: Float
-    /// Min temperature in Celcius
+    /// Min temperature in celsius
     let temperatureMinimum: Float
-    /// Max temperature in Celcius
+    /// Max temperature in celsius
     let temperatureMaximum: Float
     /// Pressure in hPa
     let pressure: Float
