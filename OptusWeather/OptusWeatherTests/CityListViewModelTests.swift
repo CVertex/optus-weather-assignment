@@ -23,9 +23,18 @@ class CityListViewModelTests: XCTestCase {
 
     // MARK: Delegate Listener
     class Listener: NSObject, CityListViewModelDelegate {
+        var expect: XCTestExpectation? = nil
+        var shouldExpect: Bool = false
+        init(expect: XCTestExpectation?) {
+            self.expect = expect
+        }
         var state: CityListViewModelState? = nil
         func updateForState(state: CityListViewModelState) {
             self.state = state
+            // Fulfill when requested
+            if shouldExpect {
+                self.expect?.fulfill()
+            }
         }
     }
 
@@ -64,7 +73,7 @@ class CityListViewModelTests: XCTestCase {
     // MARK: Tests
     func testInitialState() {
         // Arrange
-        let listen = Listener()
+        let listen = Listener(expect:nil)
 
         // Act
         let vm = CityListViewModel(delegate: listen, apiClient: DoNothingClient())
@@ -77,27 +86,36 @@ class CityListViewModelTests: XCTestCase {
 
     func testInitialToLoading() {
         // Arrange
-        let listen = Listener()
-        let vm = CityListViewModel(delegate: listen, apiClient: DoNothingClient())
+        let listen = Listener(expect:nil)
+        let client = CallbackClient()
+        let vm = CityListViewModel(delegate: listen, apiClient: client)
+        let expect = expectation(description: "Loading expectation")
+        client.callbackHandler = { callback in
+            expect.fulfill()
+        }
 
         // Act
         vm.handleLoadPressed()
 
         // Assert
         // Loading and no cities
-        XCTAssert(listen.state! == .loading)
-        XCTAssert(vm.state == .loading)
-        XCTAssert(vm.cities.count == 0)
+        waitForExpectations(timeout: 10) { err in
+            XCTAssert(listen.state! == .loading)
+            XCTAssert(vm.state == .loading)
+            XCTAssert(vm.cities.count == 0)
+        }
     }
 
     func testLoadingToLoaded() {
         // Arrange
-        let listen = Listener()
+        let listenExpect = expectation(description: "Listen received")
+        let listen = Listener(expect: listenExpect)
         let client = CallbackClient()
         let vm = CityListViewModel(delegate: listen, apiClient: client)
         let expect = expectation(description: "Loaded expectation")
         client.callbackHandler = { callback in
             let cities = loadCitiesApiModel()
+            listen.shouldExpect = true
             callback(.success(cities))
             expect.fulfill()
         }
@@ -108,6 +126,7 @@ class CityListViewModelTests: XCTestCase {
         // Assert
         // Loaded w/ 3 cities
         waitForExpectations(timeout: 10) { err in
+            print("State:\(listen.state)")
             XCTAssert(listen.state! == .loaded)
             XCTAssert(vm.state == .loaded)
             XCTAssert(vm.cities.count == 3)
@@ -116,11 +135,13 @@ class CityListViewModelTests: XCTestCase {
 
     func testLoadingToError() {
         // Arrange
-        let listen = Listener()
+        let listenExpect = expectation(description: "Listen received")
+        let listen = Listener(expect:listenExpect)
         let client = CallbackClient()
         let vm = CityListViewModel(delegate: listen, apiClient: client)
         let expect = expectation(description: "Error expectation")
         client.callbackHandler = { callback in
+            listen.shouldExpect = true
             callback(.failure(.network))
             expect.fulfill()
         }
@@ -140,11 +161,13 @@ class CityListViewModelTests: XCTestCase {
     /// Testing a successful retry
     func testLoadingToErrorToLoadingToLoaded() {
         // Arrange, Loading -> Error
-        let listen = Listener()
+        let listenExpect = expectation(description: "Error received")
+        let listen = Listener(expect:listenExpect)
         let client = CallbackClient()
         let vm = CityListViewModel(delegate: listen, apiClient: client)
         var expect = expectation(description: "Error expectation")
         client.callbackHandler = { callback in
+            listen.shouldExpect = true
             callback(.failure(.network))
             expect.fulfill()
         }
@@ -160,8 +183,12 @@ class CityListViewModelTests: XCTestCase {
         }
 
         // Arrange, Error -> Loading -> Loaded
+        listen.shouldExpect = false // Reset
         expect = expectation(description: "Loaded expectation")
+        let loadedReceived = expectation(description: "Loaded received")
+        listen.expect = loadedReceived
         client.callbackHandler = { callback in
+            listen.shouldExpect = true
             callback(.success(loadCitiesApiModel()))
             expect.fulfill()
         }
