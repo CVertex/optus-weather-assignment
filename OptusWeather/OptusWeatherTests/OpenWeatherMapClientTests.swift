@@ -12,21 +12,19 @@ import XCTest
 /// Simple tests for open weather map api client
 /// NB: hits real API. In practice, I use Moya as a network abstraction layer
 class OpenWeatherMapClientTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func test3CitiesAreLoaded() {
         // Arrange
         let client = OpenWeatherMapApiClient()
-        var result:Result<[CityWeatherApiModel],ApiError>? = nil
+        var result: Result<[CityWeatherApiModel], ApiError>? = nil
         let expect = expectation(description: "Fetching sydney, melb, bris")
         // Act
         client.fetchCitiesWeather() { r in
@@ -37,7 +35,7 @@ class OpenWeatherMapClientTests: XCTestCase {
         waitForExpectations(timeout: 10) { err in
             switch result! {
             case let .success(cits):
-                XCTAssertEqual(cits.count,3)
+                XCTAssertEqual(cits.count, 3)
                 break
             case .failure:
                 XCTFail("Shouldn't fail")
@@ -45,5 +43,4 @@ class OpenWeatherMapClientTests: XCTestCase {
             }
         }
     }
-    
 }

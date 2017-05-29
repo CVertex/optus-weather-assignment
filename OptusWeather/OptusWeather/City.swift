@@ -5,7 +5,6 @@
 //  Created by Vijay Santhanam on 24/05/2017.
 //  Copyright © 2017 Vijay Santhanam. All rights reserved.
 //
-// swiftlint:disable variable_name line_length
 import Foundation
 
 /// City with weather, location and sun details
@@ -24,9 +23,7 @@ public struct City {
     let sun: Sun
 }
 
-
 public extension City {
-
     public init(model: CityWeatherApiModel) {
         self.id = model.id
         self.name = model.name
