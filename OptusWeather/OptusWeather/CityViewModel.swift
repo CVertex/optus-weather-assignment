@@ -45,18 +45,18 @@ public extension CityViewModel {
     public init(city: City) {
         self.name = city.name
         self.country = city.country
-        self.temperature = Formatters.tempToString(value: city.weather.temperature.value)
-        self.temperatureMinimum = Formatters.tempToString(value: city.weather.temperature.minimum)
-        self.temperatureMaximum = Formatters.tempToString(value: city.weather.temperature.maximum)
+        self.temperature = Formatters.Temp.string(from: city.weather.temperature.value)
+        self.temperatureMinimum = Formatters.Temp.string(from: city.weather.temperature.minimum)
+        self.temperatureMaximum = Formatters.Temp.string(from: city.weather.temperature.maximum)
         self.sunrise = Formatters.sunTime.string(from: city.sun.sunrise)
         self.sunset = Formatters.sunTime.string(from: city.sun.sunset)
         self.condition = city.weather.condition.description
         self.conditionIconUrl = city.weather.condition.iconUrl
-        self.visibility = Formatters.distanceToString(meters: Float(city.weather.visibility))
-        self.pressure = Formatters.pressureToString(value: city.weather.pressure)
-        self.humidity = Formatters.percentageToString(value: city.weather.humidity)
-        self.cloudiness = Formatters.percentageToString(value: city.weather.cloudiness)
-        self.rainVolume = Formatters.rainVolumeToString(value: city.weather.rainVolume)
+        self.visibility = Formatters.Distance.string(from: Float(city.weather.visibility))
+        self.pressure = Formatters.Pressure.string(from: city.weather.pressure)
+        self.humidity = Formatters.Percentage.string(from: city.weather.humidity)
+        self.cloudiness = Formatters.Percentage.string(from: city.weather.cloudiness)
+        self.rainVolume = Formatters.RainVolume.string(from: city.weather.rainVolume)
         self.hue = CityHues.hue(city: city.name)
     }
 }

@@ -19,7 +19,7 @@ public class DebugOverlay {
     /// See http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/
     /// Call on app boot
     public func prepare() {
-        self.overlayClass = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type
+        overlayClass = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type
         _ = overlayClass?.perform(NSSelectorFromString("prepareDebuggingOverlay"))
     }
 

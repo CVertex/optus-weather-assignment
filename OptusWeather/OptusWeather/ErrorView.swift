@@ -22,6 +22,12 @@ public class ErrorView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
+
+    public func addRetryHandler(_ target: Any?, action: Selector) {
+        retryButton.addTarget(target,
+                              action: action,
+                              for: .touchUpInside)
+    }
 }
 
 public extension ErrorView {

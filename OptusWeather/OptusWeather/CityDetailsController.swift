@@ -12,7 +12,7 @@ class CityDetailsController: UIViewController {
     // State
     var city: CityViewModel? {
         didSet {
-            self.update()
+            update()
         }
     }
 
@@ -39,8 +39,8 @@ class CityDetailsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.colorRows()
-        self.showRows()
+        colorRows()
+        showRows()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,17 +52,17 @@ class CityDetailsController: UIViewController {
     // MARK: - View Setup and Animation
     func colorRows() {
         // Color all the background rows
-        self.view1.backgroundColor = cityColor(saturation:0.6)
-        self.view2.backgroundColor = cityColor(saturation:0.5)
-        self.view3.backgroundColor = cityColor(saturation:0.40)
-        self.view4.backgroundColor = cityColor(saturation:0.30)
-        self.view5.backgroundColor = cityColor(saturation:0.20)
-        self.view6.backgroundColor = cityColor(saturation:0.1)
+        view1.backgroundColor = cityColor(saturation:0.6)
+        view2.backgroundColor = cityColor(saturation:0.5)
+        view3.backgroundColor = cityColor(saturation:0.40)
+        view4.backgroundColor = cityColor(saturation:0.30)
+        view5.backgroundColor = cityColor(saturation:0.20)
+        view6.backgroundColor = cityColor(saturation:0.1)
     }
 
     func showRows() {
         // Only animate if shown
-        if !self.view2.isHidden {
+        if !view2.isHidden {
             return
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
@@ -101,19 +101,19 @@ class CityDetailsController: UIViewController {
             return
         }
         // Update title and labels
-        self.title = city.name
-        self.cityLabel.text = city.name
-        self.tempLabel.text = city.temperature
-        self.conditionLabel.text = city.condition
-        self.minTempLabel.text = city.temperatureMinimum
-        self.maxTempLabel.text = city.temperatureMaximum
-        self.sunriseLabel.text = city.sunrise
-        self.sunsetLabel.text = city.sunset
-        self.cloudsLabel.text = city.cloudiness
-        self.rainLabel.text = city.rainVolume
-        self.humidityLabel.text = city.humidity
-        self.pressureLabel.text = city.pressure
-        self.visibilityLabel.text = city.visibility
+        title = city.name
+        cityLabel.text = city.name
+        tempLabel.text = city.temperature
+        conditionLabel.text = city.condition
+        minTempLabel.text = city.temperatureMinimum
+        maxTempLabel.text = city.temperatureMaximum
+        sunriseLabel.text = city.sunrise
+        sunsetLabel.text = city.sunset
+        cloudsLabel.text = city.cloudiness
+        rainLabel.text = city.rainVolume
+        humidityLabel.text = city.humidity
+        pressureLabel.text = city.pressure
+        visibilityLabel.text = city.visibility
     }
 
     // MARK: - Helpers

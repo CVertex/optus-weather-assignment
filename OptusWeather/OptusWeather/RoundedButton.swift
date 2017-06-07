@@ -30,6 +30,6 @@ import QuartzCore
 
     public override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .clear
+        backgroundColor = .clear
     }
 }

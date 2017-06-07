@@ -17,7 +17,7 @@ public enum CityListViewModelState {
 }
 
 public protocol CityListViewModelDelegate : class {
-    func updateForState(state: CityListViewModelState)
+    func update(for state: CityListViewModelState)
 }
 
 public class CityListViewModel {
@@ -31,7 +31,7 @@ public class CityListViewModel {
         didSet {
             DispatchQueue.main.async {
                 // Notify state change
-                self.delegate?.updateForState(state: self.state)
+                self.delegate?.update(for: self.state)
             }
         }
     }
@@ -43,12 +43,12 @@ public class CityListViewModel {
         self.cities = []
         self.state = .initial
         // Manually notify delegate
-        self.delegate?.updateForState(state: .initial)
+        self.delegate?.update(for: .initial)
     }
 
     // MARK: Public actions
     public func handleLoadPressed() {
-        if self.state == .loading {
+        if state == .loading {
             return // Already loading
         }
 

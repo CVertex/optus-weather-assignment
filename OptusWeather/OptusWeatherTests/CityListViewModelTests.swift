@@ -29,7 +29,7 @@ class CityListViewModelTests: XCTestCase {
             self.expect = expect
         }
         var state: CityListViewModelState? = nil
-        func updateForState(state: CityListViewModelState) {
+        func update(for state: CityListViewModelState) {
             self.state = state
             // Fulfill when requested
             if shouldExpect {
