@@ -24,41 +24,12 @@ class CityListController: UITableViewController, CityListViewModelDelegate {
         viewModel.handleLoadPressed() // Initiate load
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Setup Views
     func setupViews() {
-        let margins = navigationController!.view.layoutMarginsGuide
-        // Loading View
-        loadingView = LoadingView.create()
-        navigationController!.view.addSubview(loadingView)
-        navigationController!.view.bringSubview(toFront: loadingView)
-        // Fill and centre
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
-        loadingView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
-        loadingView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-        loadingView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        // Error View
-        errorView = ErrorView.create()
-        navigationController!.view.addSubview(errorView)
-        navigationController!.view.bringSubview(toFront: errorView)
-        // Fill and centre
-        errorView.translatesAutoresizingMaskIntoConstraints = false
-        errorView.leftAnchor.constraint(equalTo: margins.leftAnchor).isActive = true
-        errorView.rightAnchor.constraint(equalTo: margins.rightAnchor).isActive = true
-        errorView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-        errorView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        // Retry handler
-        errorView.retryButton.addTarget(self,
-                                 action: #selector(retryPressed),
-                                 for: .touchUpInside)
-        // Hide both by default
-        errorView.isHidden = true
-        loadingView.isHidden = true
+        let aux = attachAuxilliaryViews()
+        loadingView = aux.loading
+        errorView = aux.error
+        errorView.addRetryHandler(self, action: #selector(retryPressed))
     }
 
     // MARK: - CityListViewModelDelegate
